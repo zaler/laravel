@@ -23,9 +23,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/proyecto/index', function () {
+/*Route::get('/proyecto/index', function () {
     return view('index');
-})->middleware(['auth', 'verified'])->name('index');
+})->middleware(['auth', 'verified'])->name('index');*/
 
 
 Route::middleware('auth')->group(function () {
@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     //Route::get('/proyecto/index', [ProyectoController::class, 'index'])->name('proyecto.index');
-    //Route::resource('proyecto', ProyectoController::class);
+    Route::resource('proyecto', ProyectoController::class);
 });
 
 require __DIR__.'/auth.php';
